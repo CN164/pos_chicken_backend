@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="change-add-table-user-profile" author="Go.purin">
+		<createTable tableName="user_data" schemaName="find_my_mate">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="login_type_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="email" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="user_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="password" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="login_lastest" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="create_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="is_deleted" type="BOOLEAN">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="change-add-table-type-id" author="Go.purin">
+		<createTable tableName="type_id" schemaName="find_my_mate">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="type_name_en" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<sql>
+			<![CDATA[
+				INSERT INTO find_my_mate.type_id(id,type_name_en) VALUES
+				(1, 'normal'),
+				(2, 'google'),
+				(3, 'facebook')
+			]]>
+		</sql>
+
+		<addForeignKeyConstraint baseColumnNames="login_type_id"
+				baseTableName="user_data"
+				constraintName="fk_id_user_data_pk_id_type_id"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="type_id"/>
+	</changeSet>
+
+	<changeSet id="change-add-table-user-detail" author="Go.purin">
+		<createTable tableName="user_detail" schemaName="find_my_mate">
+			<column name="user_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="first_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="last_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="phone_number" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="gender" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="study_place_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="address_detail" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="address_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="update_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="create_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="user_id"
+				baseTableName="user_detail"
+				constraintName="fk_user_id_user_detail_pk_id_user_data"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="user_data"/>
+	</changeSet>
+
+	<changeSet id="change-add-study-detail" author="Go.purin">
+		<createTable tableName="study_detail" schemaName="find_my_mate">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="name_study_th" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="name_study_en" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="province_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="study_place_id"
+				baseTableName="user_detail"
+				constraintName="fk_user_detail_study_place_id_pk_id_study_detail"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="study_detail"/>
+	</changeSet>
+
+	<changeSet id="change-add-table-district-detail" author="Go.purin">
+		<createTable tableName="district_detail" schemaName="find_my_mate">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="district_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="change-add-table-province-detail" author="Go.purin">
+		<createTable tableName="province_detail" schemaName="find_my_mate">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="province_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="province_id"
+				baseTableName="study_detail"
+				constraintName="fk_study_detail_province_id_pk_id_province_detail"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="province_detail"/>
+	</changeSet>
+
+	<changeSet id="change-add-table-zip-code-detail" author="Go.purin">
+		<createTable tableName="zip_code_detail" schemaName="find_my_mate">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="zip_code" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="change-add-table-address-detail" author="Go.purin">
+		<createTable tableName="address_detail" schemaName="find_my_mate">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="district_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="province_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="zip_code_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="district_id"
+				baseTableName="address_detail"
+				constraintName="fk_address_detail_district_id_pk_id_district_detail"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="district_detail"/>
+
+		<addForeignKeyConstraint baseColumnNames="province_id"
+				baseTableName="address_detail"
+				constraintName="fk_address_detail_province_id_pk_id_province_detail"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="province_detail"/>
+
+		<addForeignKeyConstraint baseColumnNames="zip_code_id"
+				baseTableName="address_detail"
+				constraintName="fk_address_detail_zip_code_id_pk_id_zip_code_detail"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="zip_code_detail"/>
+	</changeSet>
+
+	<changeSet id="change-add-table-resident" author="Go.purin">
+		<createTable tableName="resident" schemaName="find_my_mate">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="resident_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="address_detail" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="price" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="user_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="capacity" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="created_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="updated_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="address_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="address_id"
+				baseTableName="user_detail"
+				constraintName="fk_user_detail_address_id_pk_id_resident"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="resident"/>
+
+		<addForeignKeyConstraint baseColumnNames="user_id"
+				baseTableName="resident"
+				constraintName="fk_resident_user_id_pk_id_user_data"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="user_data"/>
+
+		<addForeignKeyConstraint baseColumnNames="address_id"
+				baseTableName="resident"
+				constraintName="fk_resident_address_id_pk_id_address_detail"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="address_detail"/>
+	</changeSet>
+
+	<changeSet id="change-add-table-status-type" author="Go.purin">
+		<createTable tableName="status_type" schemaName="find_my_mate">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="status_type_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<sql>
+			<![CDATA[
+			INSERT INTO find_my_mate.status_type(id,status_type_name) VALUES
+				(1, 'approve'),
+				(2, 'pending'),
+				(3, 'cancel'),
+				(4, 'waiting')
+		]]>
+		</sql>
+
+	</changeSet>
+
+	<changeSet id="change-add-table-contact-status" author="Go.purin">
+		<createTable tableName="contact_status" schemaName="find_my_mate">
+			<column name="request_user_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="response_user_id" type="INT">
+				<constraints nullable="true"></constraints>
+			</column>
+			<column name="status_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="created_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="updated_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="request_user_id"
+				baseTableName="contact_status"
+				constraintName="fk_contact_status_request_user_id_pk_id_user_data"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="user_data"/>
+
+		<addForeignKeyConstraint baseColumnNames="response_user_id"
+				baseTableName="contact_status"
+				constraintName="fk_contact_status_response_user_id_pk_id_user_data"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="user_data"/>
+
+		<addForeignKeyConstraint baseColumnNames="status_id"
+				baseTableName="contact_status"
+				constraintName="fk_contact_status_status_id_pk_id_status_type"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="status_type"/>
+	</changeSet>
+
+	<changeSet id="change-add-table-ad-type" author="Go.purin">
+		<createTable tableName="ad_type" schemaName="find_my_mate">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="ad_type_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<sql>
+			<![CDATA[
+				INSERT INTO find_my_mate.ad_type(id,ad_type_name) VALUES
+				(1, 'home'),
+				(2, 'main')
+			]]>
+		</sql>
+	</changeSet>
+
+	<changeSet id="change-add-table-ad-picture" author="Go.purin">
+		<createTable tableName="ad_picture" schemaName="find_my_mate">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="picture_path" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="picture_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="picture_type" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet id="change-add-table-advertisement" author="Go.purin">
+		<createTable tableName="advertisement" schemaName="find_my_mate">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="ad_type_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="ad_picture_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="effective_date" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="expired_date" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="ad_type_id"
+				baseTableName="advertisement"
+				constraintName="fk_advertisement_ad_type_id_pk_id_ad_type"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="ad_type"/>
+
+		<addForeignKeyConstraint baseColumnNames="ad_picture_id"
+				baseTableName="advertisement"
+				constraintName="fk_advertisement_ad_picture_id_pk_id_ad_picture"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="ad_picture"/>
+	</changeSet>
+
+</databaseChangeLog>
