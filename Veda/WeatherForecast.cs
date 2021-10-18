@@ -1,6 +1,6 @@
 using System;
 
-namespace Veda
+namespace pos_chicken_backend
 {
     public class WeatherForecast
     {

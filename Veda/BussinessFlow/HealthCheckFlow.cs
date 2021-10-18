@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Veda.Models;
-using Veda.Repository;
+using pos_chicken_backend.Models;
+using pos_chicken_backend.Repository;
 
-namespace Veda.BussinessFlow
+namespace pos_chicken_backend.BussinessFlow
 {
     public class HealthCheckBussinessFlow
     {

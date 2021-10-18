@@ -1,4 +1,4 @@
-﻿namespace Veda.ExceptionBase
+﻿namespace pos_chicken_backend.ExceptionBase
 {
     public class NotFoundException : BaseException
     {

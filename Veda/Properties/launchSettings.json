@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Local"
       }
     },
-    "Veda": {
+    "pos_chicken_backend": {
       "commandName": "Project",
       "dotnetRunMessages": "true",
       "launchBrowser": false,

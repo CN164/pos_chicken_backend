@@ -2,8 +2,8 @@
 
 version: '3.4'
 services:
-  veda:
-    image: veda
+  pos_chicken_backend:
+    image: pos_chicken_backend
     build:
       dockerfile: ./Dockerfile
       context: .

@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Veda.Models
+namespace pos_chicken_backend.Models
 {
     [Table("healthcheck", Schema = "find_my_mate")]
     public class HealthCheckEntity

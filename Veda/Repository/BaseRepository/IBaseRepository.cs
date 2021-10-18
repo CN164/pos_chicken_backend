@@ -1,10 +1,10 @@
-﻿using Veda.Models;
+﻿using pos_chicken_backend.Models;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-namespace Veda.Repository
+namespace pos_chicken_backend.Repository
 {
     public interface IBaseRepository
     {

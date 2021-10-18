@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Veda.ExceptionBase;
+using pos_chicken_backend.ExceptionBase;
 
-namespace Veda.Controllers
+namespace pos_chicken_backend.Controllers
 {
     public class BaseController : Controller
     {

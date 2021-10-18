@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Veda.Models;
+using pos_chicken_backend.Models;
 
-namespace Veda.Data
+namespace pos_chicken_backend.Data
 {
     public class MainContext : DbContext
     {

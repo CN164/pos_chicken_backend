@@ -4,9 +4,9 @@ using Newtonsoft.Json;
 using System;
 using System.Net;
 using System.Threading.Tasks;
-using Veda.ExceptionBase;
+using pos_chicken_backend.ExceptionBase;
 
-namespace Veda.Handler
+namespace pos_chicken_backend.Handler
 {
     public class ErrorHandlingMiddleware
     {

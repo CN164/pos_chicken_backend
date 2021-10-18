@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Veda.BussinessFlow;
+using pos_chicken_backend.BussinessFlow;
 
-namespace Veda.Controllers
+namespace pos_chicken_backend.Controllers
 {
 
     public class HealthCheckController : Controller

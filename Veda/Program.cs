@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Veda
+namespace pos_chicken_backend
 {
     public class Program
     {

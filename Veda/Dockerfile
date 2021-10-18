@@ -13,7 +13,7 @@ RUN export JAVA_HOME
 
 ARG APP_ENV="Development"
 ENV ASPNETCORE_ENVIRONMENT ${APP_ENV}
-ENV SERVICE_NAME="Veda"
+ENV SERVICE_NAME="pos_chicken_backend"
 
 WORKDIR /app
 

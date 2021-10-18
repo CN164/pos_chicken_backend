@@ -16,7 +16,7 @@ dbPassword=""
 
 if [ $ASPNETCORE_ENVIRONMENT = "LocalRegression" ] ;\
 then\
-	dbUrl="jdbc:postgresql://pgsql_veda_regression/postgres"
+	dbUrl="jdbc:postgresql://pgsql_pos_chicken_backend_regression/postgres"
 	dbUserName="postgres"
 	dbPassword=""
 fi;
@@ -39,4 +39,4 @@ java -jar liquibase.jar \
 	--password=$dbPassword\
 	--defaultSchemaName=find_my_mate\
 	update && cd /app/out \
-	&& dotnet Veda.dll
+	&& dotnet pos_chicken_backend.dll

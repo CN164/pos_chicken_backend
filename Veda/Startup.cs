@@ -12,14 +12,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Veda.BussinessFlow;
-//using Veda.BussinessLogic;
-using Veda.Data;
-using Veda.Handler;
-using Veda.Models;
-using Veda.Repository;
+using pos_chicken_backend.BussinessFlow;
+//using pos_chicken_backend.BussinessLogic;
+using pos_chicken_backend.Data;
+using pos_chicken_backend.Handler;
+using pos_chicken_backend.Models;
+using pos_chicken_backend.Repository;
 
-namespace Veda
+namespace pos_chicken_backend
 {
     public class Startup
     {
