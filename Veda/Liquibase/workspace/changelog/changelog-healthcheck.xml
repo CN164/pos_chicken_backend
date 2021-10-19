@@ -7,7 +7,7 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
   <changeSet id="create_healthcheck" author="Go.purin" >
-    <createTable tableName="healthcheck" schemaName="find_my_mate">
+    <createTable tableName="healthcheck" schemaName="pos_chicken_backend">
       <column name="id" type="INT"  autoIncrement="true">
         <constraints primaryKey="true"></constraints>
       </column>
@@ -15,7 +15,7 @@
       </column>
     </createTable>
 
-    <insert tableName="healthcheck" schemaName="find_my_mate">
+    <insert tableName="healthcheck" schemaName="pos_chicken_backend">
       <column name="message" value="I'm fine, Thank you :)"/>
     </insert>
   </changeSet>

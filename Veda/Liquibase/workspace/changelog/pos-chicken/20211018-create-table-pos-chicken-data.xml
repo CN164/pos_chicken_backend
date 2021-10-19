@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="change-add-table-state-detail" author="Go.purin">
+		<createTable tableName="state_data" schemaName="pos_chicken_backend">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="state_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+		<sql>
+			<![CDATA[
+				INSERT INTO pos_chicken_backend.state_data(id,state_name) VALUES
+				(1, 'รออาหาร'),
+				(2, 'รอลูกค้า'),
+				(3, 'ส่งสำเร็จ')
+			]]>
+		</sql>
+	</changeSet>
+
+	<changeSet id="chang-add-table-stock-data" author="Go.purin">
+		<createTable tableName="stock_data" schemaName="pos_chicken_backend">
+			<column name="id" type="INT">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="stock_name" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="stock_total" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="stock_unit_price" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="point_to_buy" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="additional_unit" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="parth_url" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+		
+	</changeSet>
+
+	<changeSet id="change-add-table-order-data" author="Go.purin">
+		<createTable tableName="order_data" schemaName="pos_chicken_backend">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="queue" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="stock_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="total_promotion" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="quantity" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="state_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
+			<column name="create_at" type="DATETIME">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+
+		<addForeignKeyConstraint baseColumnNames="stock_id"
+				baseTableName="order_data"
+				constraintName="fk_stock_id_order_data_pk_id_stock_data"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="stock_data"/>
+		
+		<addForeignKeyConstraint baseColumnNames="state_id"
+				baseTableName="order_data"
+				constraintName="fk_state_id_order_data_pk_id_state_data"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="state_data"/>
+		
+	</changeSet>
+
+</databaseChangeLog>

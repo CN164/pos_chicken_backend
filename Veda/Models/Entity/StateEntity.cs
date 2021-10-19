@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace pos_chicken_backend.Models
 {
-    [Table("healthcheck", Schema = "pos_chicken_backend")]
-    public class HealthCheckEntity
+    [Table("state_data", Schema = "pos_chicken_backend")]
+    public class StateEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,7 +17,7 @@ namespace pos_chicken_backend.Models
         [Column("id")]
         public int id { get; set; }
 
-        [Column("message")]
-        public string statusMessage { get; set; }
+        [Column("state_name")]
+        public string stateOrder { get; set; }
     }
 }

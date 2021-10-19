@@ -37,6 +37,6 @@ java -jar liquibase.jar \
 	--changeLogFile=./changelog/changelog-master.xml \
 	--username=$dbUserName\
 	--password=$dbPassword\
-	--defaultSchemaName=find_my_mate\
+	--defaultSchemaName=pos_chicken_backend\
 	update && cd /app/out \
 	&& dotnet pos_chicken_backend.dll

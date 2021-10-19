@@ -6,7 +6,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
   <changeSet id="add-column-to-ad-type" author="Go.purin">
-    <addColumn tableName="ad_type" schemaName="find_my_mate">
+    <addColumn tableName="ad_type" schemaName="pos_chicken_backend">
       <column name="message_en" type="TEXT">
       </column>
     </addColumn>

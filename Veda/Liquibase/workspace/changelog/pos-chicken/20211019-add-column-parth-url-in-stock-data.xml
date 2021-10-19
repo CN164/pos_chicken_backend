@@ -5,11 +5,11 @@
          xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-  <changeSet id="add-year-to-user-detail" author="bio.pat">
+  <changeSet id="add-table-parth-url" author="Go.purin">
 	  <sql>
 		  <![CDATA[
-				ALTER TABLE find_my_mate.user_detail
-				ADD COLUMN year INT4;
+				ALTER TABLE pos_chicken_backend.stock_data
+				ADD COLUMN parth_url VARCHAR(255);
 			]]>
 	  </sql>
   </changeSet>

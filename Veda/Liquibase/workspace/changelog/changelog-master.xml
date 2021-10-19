@@ -7,7 +7,6 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
   <include file="changelog/changelog-healthcheck.xml"/>
-  <include file="changelog/find-my-mate/20210523-create-table-find-my-mate-and-seed-data.xml"/>
-  <include file="changelog/find-my-mate/20210529-add-column-year-in-user-detail.xml"/>
+  <include file="changelog/pos-chicken/20211018-create-table-pos-chicken-data.xml"/>
 	
 </databaseChangeLog>

@@ -6,9 +6,9 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-  <changeSet id="create_schema_find_my_mate" author="Go.purin">
+  <changeSet id="create_schema_pos_chicken_backend" author="Go.purin">
     <sql dbms="postgresql" endDelimiter=";">
-		CREATE SCHEMA IF NOT EXISTS find_my_mate
+		CREATE SCHEMA IF NOT EXISTS pos_chicken_backend
 	</sql>
   </changeSet>
 </databaseChangeLog>

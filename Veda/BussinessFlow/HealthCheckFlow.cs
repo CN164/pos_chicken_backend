@@ -16,9 +16,7 @@ namespace pos_chicken_backend.BussinessFlow
         }
         public string HealthCheck()
         {
-            string reshealthcheck = "I'm still here!";
-            return reshealthcheck;
-            //return this.baseRepository.Gets<HealthCheckEntity>().FirstOrDefault().statusMessage;
+            return this.baseRepository.Gets<HealthCheckEntity>().FirstOrDefault().statusMessage;
         }
     }
 }
