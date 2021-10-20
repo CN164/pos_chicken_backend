@@ -1,4 +1,7 @@
 # pos_chicken_backEnd
 
-Create DB by Dockerfile
-use docker-compose up --build
+# PostgreSQL
+
+Just  `docker-compose up -d` and you are ready to go!
+
+Do `docker-compose up -d --build` if you edit something.
