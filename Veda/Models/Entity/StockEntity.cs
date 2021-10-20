@@ -20,6 +20,9 @@ namespace pos_chicken_backend.Models
         [Column("stock_name")]
         public string stockName { get; set; }
 
+        [Column("stock_total")]
+        public int stockTotal { get; set; }
+
         [Column("stock_unit_price")]
         public int stockunitPrice { get; set; }
 

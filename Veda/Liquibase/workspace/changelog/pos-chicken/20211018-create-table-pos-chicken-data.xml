@@ -8,7 +8,7 @@
 
 	<changeSet id="change-add-table-state-detail" author="Go.purin">
 		<createTable tableName="state_data" schemaName="pos_chicken_backend">
-			<column name="id" type="INT">
+			<column name="id" type="SERIAL" autoIncrement="true">
 				<constraints primaryKey="true"></constraints>
 			</column>
 			<column name="state_name" type="TEXT">
@@ -27,7 +27,7 @@
 
 	<changeSet id="chang-add-table-stock-data" author="Go.purin">
 		<createTable tableName="stock_data" schemaName="pos_chicken_backend">
-			<column name="id" type="INT">
+			<column name="id" type="SERIAL" autoIncrement="true">
 				<constraints primaryKey="true"></constraints>
 			</column>
 			<column name="stock_name" type="TEXT">
@@ -54,7 +54,7 @@
 
 	<changeSet id="change-add-table-order-data" author="Go.purin">
 		<createTable tableName="order_data" schemaName="pos_chicken_backend">
-			<column name="id" type="INT" autoIncrement="true">
+			<column name="id" type="SERIAL" autoIncrement="true">
 				<constraints primaryKey="true"></constraints>
 			</column>
 			<column name="queue" type="INT">
