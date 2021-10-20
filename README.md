@@ -1,6 +1,6 @@
 # pos_chicken_backEnd
 
-# PostgreSQL
+- PostgreSQL -
 
 Just  `docker-compose up -d` and you are ready to go!
 
