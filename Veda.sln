@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Veda", "Veda\Veda.csproj", "{70D62EA5-534A-4CB0-A990-FC5A0796D8CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pos_chicken_backend", "Veda\pos_chicken_backend.csproj", "{70D62EA5-534A-4CB0-A990-FC5A0796D8CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

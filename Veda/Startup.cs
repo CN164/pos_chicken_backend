@@ -40,6 +40,8 @@ namespace pos_chicken_backend
 
             //BussinessFlow
             services.AddScoped<HealthCheckBussinessFlow>();
+            services.AddScoped<OrderBussinessFlow>();
+            services.AddScoped<StockFlowBussinessFlow>();
 
             //BussinessLogic
 
