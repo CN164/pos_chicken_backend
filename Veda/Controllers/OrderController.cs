@@ -27,5 +27,11 @@ namespace pos_chicken_backend.Controllers
             List<OrderResponse> response = _orderBussinessFlow.Orderbuy(request);
             return response;
         }
+        [HttpPatch("/Order/state")]
+        public List<OrderStateResponse> OrderUpdate([FromBody] List<OrderStateRequest> request)
+        {
+            List<OrderStateResponse> response = _orderBussinessFlow.Ordersteat(request);
+            return null;
+        }
     }
 }
