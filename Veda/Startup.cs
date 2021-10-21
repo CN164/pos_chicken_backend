@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using pos_chicken_backend.BussinessFlow;
-//using pos_chicken_backend.BussinessLogic;
+using pos_chicken_backend.BussinessLogic;
 using pos_chicken_backend.Data;
 using pos_chicken_backend.Handler;
 using pos_chicken_backend.Models;
@@ -44,6 +44,8 @@ namespace pos_chicken_backend
             services.AddScoped<StockFlowBussinessFlow>();
 
             //BussinessLogic
+            services.AddScoped<OrderLogic>();
+            services.AddScoped<StockLogic>();
 
             //repository
             services.AddScoped<IBaseRepository, BaseRepository>();
