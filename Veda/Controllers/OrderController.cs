@@ -31,7 +31,13 @@ namespace pos_chicken_backend.Controllers
         public List<OrderStateResponse> OrderUpdate([FromBody] List<OrderStateRequest> request)
         {
             List<OrderStateResponse> response = _orderBussinessFlow.Ordersteat(request);
-            return null;
+            return response;
+        }
+        [HttpGet("/Order/report")]
+        public List<OrderReportResponse> orderReportResponse()
+        {
+            List<OrderReportResponse> response = _orderBussinessFlow.orderReportResponse();
+            return response;
         }
     }
 }

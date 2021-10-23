@@ -49,29 +49,27 @@
 				<constraints nullable="false"></constraints>
 			</column>
 		</createTable>
-
 		<sql>
 			<![CDATA[
 				INSERT INTO pos_chicken_backend.stock_data(id,stock_name,stock_total,stock_unit_price,point_to_buy,additional_unit,parth_url) VALUES
-				(1, 'น่องไก่ติดสะโพก', '60', '15', '25', '0', '/picture/Chicken01.jpg'),
-				(2, 'อกไก่', '60', '25', '25', '0', '/picture/Chicken02.jpg'),
-				(3, 'ปีกไก่ทอด', '60', '25', '25', '0', '/picture/Chicken03.jpg'),
-				(4, 'หมูสามชั้นทอด', '60', '30', '25', '0', '/picture/Chicken04.jpg'),
-				(5, 'โครงไก่ทอด', '60', '30', '25', '0', '/picture/Chicken05.jpg'),
-				(6, 'ปลายปีก', '60', '10', '25', '0', '/picture/Chicken06.jpg'),
-				(7, 'น่องไก่', '60', '20', '25', '0', '/picture/Chicken07.jpg'),
-				(8, 'หอมเจียว', '50', '10', '30', '0', '/picture/Chicken08.jpg'),
-				(9, 'หนังติดมัน', '60', '20', '25', '0', '/picture/Chicken09.jpg'),
-				(10, 'ข้าวเหนียวดำ', '50', '5', '30', '0', '/picture/Chicken10.jpg'),
-				(11, 'ข้าวเหนียวขาว', '50', '5', '30', '0', '/picture/Chicken10.jpg'),
-				(12, 'ไก่ทั้งตัว', '30', '160', '10', '0', '/picture/Chicken10.jpg'),
-				(13, 'หอมเจียวใหญ่', '50', '10', '30', '0', '/picture/Chicken10.jpg'),
-				(14, 'ชุดสุดคุ้ม', '35', '139', '20', '0', '/picture/Chicken10.jpg'),
-				(15, 'ชุุดจุใจใช่เลย', '35', '149', '20', '0', '/picture/Chicken10.jpg'),
-				(16, 'ชุดครอบครัวสุขสันต์', '20', '259', '10', '0', '/picture/Chicken10.jpg'),
+				(1, 'น่องไก่ติดสะโพก', 60, 15, 25, 0, '/picture/Chicken01.jpg'),
+				(2, 'อกไก่', 60, 25, 25, 0, '/picture/Chicken02.jpg'),
+				(3, 'ปีกไก่ทอด', 60, 25, 25, 0, '/picture/Chicken03.jpg'),
+				(4, 'หมูสามชั้นทอด', 60, 30, 25, 0, '/picture/Chicken04.jpg'),
+				(5, 'โครงไก่ทอด', 60, 30, 25, 0, '/picture/Chicken05.jpg'),
+				(6, 'ปลายปีก', 60, 10, 25, 0, '/picture/Chicken06.jpg'),
+				(7, 'น่องไก่', 60, 20, 25, 0, '/picture/Chicken07.jpg'),
+				(8, 'หอมเจียว', 50, 10, 30, 0, '/picture/Chicken08.jpg'),
+				(9, 'หนังติดมัน', 60, 20, 25, 0, '/picture/Chicken09.jpg'),
+				(10, 'ข้าวเหนียวดำ', 50, 5, 30, 0, '/picture/Chicken10.jpg'),
+				(11, 'ข้าวเหนียวขาว', 50, 5, 30, 0, '/picture/Chicken10.jpg'),
+				(12, 'ไก่ทั้งตัว', 30, 160, 10, 0, '/picture/Chicken10.jpg'),
+				(13, 'หอมเจียวใหญ่', 50, 10, 30, 0, '/picture/Chicken10.jpg'),
+				(14, 'ชุดสุดคุ้ม', 35, 139, 20, 0, '/picture/Chicken10.jpg'),
+				(15, 'ชุุดจุใจใช่เลย', 35, 149, 20, 0, '/picture/Chicken10.jpg'),
+				(16, 'ชุดครอบครัวสุขสันต์', 20, 259, 10, 0, '/picture/Chicken10.jpg')
 			]]>
 		</sql>
-		
 	</changeSet>
 
 	<changeSet id="change-add-table-order-data" author="Go.purin">

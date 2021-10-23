@@ -24,6 +24,7 @@ namespace pos_chicken_backend.BussinessLogic
                         stockAndRes.Item1.additionalUnit = 0;
                     }
                 }
+                    
             }
 
             return stockData;
@@ -85,6 +86,26 @@ namespace pos_chicken_backend.BussinessLogic
                 results.Add(setsteat);
             }
 
+            return results;
+        }
+        public List<OrderReportResponse> orderReportResponses(List<OrderEntity> OrderDatas, List<StockEntity> StockDatas)
+        {
+            List<OrderReportResponse> results = new List<OrderReportResponse>();
+            foreach (var Temps in OrderDatas.Zip(StockDatas, Tuple.Create))
+            {
+                if (Temps.Item1.id == Temps.Item2.id)
+                {
+                    OrderReportResponse orderSet = new OrderReportResponse()
+                    {
+                        id = Temps.Item2.id,
+                        stokcName = Temps.Item2.stockName,
+                        totalUnit = (Temps.Item1.quantityOrder),
+                        totalPrice = (Temps.Item2.stockTotal * Temps.Item2.stockunitPrice)
+                        
+                    };
+                    results.Add(orderSet);
+                }
+            }
             return results;
         }
     }
