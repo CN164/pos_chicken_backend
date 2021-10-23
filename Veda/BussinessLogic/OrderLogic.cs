@@ -15,7 +15,14 @@ namespace pos_chicken_backend.BussinessLogic
                 if (stockAndRes.Item1.id == stockAndRes.Item2.stockId)
                 {
                     stockAndRes.Item1.stockTotal = (stockAndRes.Item1.stockTotal - stockAndRes.Item2.quantityOrder);
-                    stockAndRes.Item1.additionalUnit = (stockAndRes.Item1.pointtoBuy - stockAndRes.Item1.stockTotal);
+                    if (stockAndRes.Item1.pointtoBuy > stockAndRes.Item1.stockTotal)
+                    {
+                        stockAndRes.Item1.additionalUnit = (stockAndRes.Item1.pointtoBuy - stockAndRes.Item1.stockTotal);
+                    }
+                    else
+                    {
+                        stockAndRes.Item1.additionalUnit = 0;
+                    }
                 }
             }
 
