@@ -42,15 +42,18 @@ namespace pos_chicken_backend.BussinessFlow
         }
         public List<OrderStateResponse> Ordersteat(List<OrderStateRequest> request)
         {
+            //IList<OrderEntity> OrderEntitys;
             foreach (OrderStateRequest item in request)
             {
                this.OrderDataQ = (List<OrderEntity>)this.baseRepository.Gets<OrderEntity>().Where(x => x.queueOrder == item.queueOrder).ToList();
             }
 
             OrderLogic orderLogic = new OrderLogic();
-            List<OrderEntity> orderResponses = orderLogic.setstateData(request, OrderDataQ);
-
+            IList<OrderEntity> orderResponses = orderLogic.setstateData(request, OrderDataQ);
+            
             List<OrderEntity> orderResponseDB = this.baseRepository.Update(orderResponses).ToList();
+            
+            
 
             return null;
         }
