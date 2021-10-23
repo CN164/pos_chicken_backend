@@ -91,17 +91,18 @@ namespace pos_chicken_backend.BussinessLogic
         public List<OrderReportResponse> orderReportResponses(List<OrderEntity> OrderDatas, List<StockEntity> StockDatas)
         {
             List<OrderReportResponse> results = new List<OrderReportResponse>();
-            foreach (var Temps in OrderDatas.Zip(StockDatas, Tuple.Create))
+            
+            foreach (StockEntity product in StockDatas)
             {
-                if (Temps.Item1.id == Temps.Item2.id)
+                List<OrderEntity> orders = OrderDatas.Where(x => x.stockId == product.id).ToList();
+                if (orders.Count > 0)
                 {
                     OrderReportResponse orderSet = new OrderReportResponse()
                     {
-                        id = Temps.Item2.id,
-                        stokcName = Temps.Item2.stockName,
-                        totalUnit = (Temps.Item1.quantityOrder),
-                        totalPrice = (Temps.Item2.stockTotal * Temps.Item2.stockunitPrice)
-                        
+                        id = product.id,
+                        stokcName = product.stockName,
+                        totalUnit = orders.Sum(x => x.quantityOrder),
+                        totalPrice = orders.Sum(x => x.quantityOrder) * product.stockunitPrice
                     };
                     results.Add(orderSet);
                 }

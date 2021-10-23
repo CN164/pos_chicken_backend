@@ -12,8 +12,6 @@ namespace pos_chicken_backend.BussinessFlow
     {
         private readonly IBaseRepository baseRepository;
         public int queueID;
-        public List<OrderEntity> OrderDataQ;
-        public List<StockEntity> StockData;
         public OrderBussinessFlow(IBaseRepository baseRepository)
         {
             this.baseRepository = baseRepository;
@@ -21,23 +19,24 @@ namespace pos_chicken_backend.BussinessFlow
         public List<OrderEntity> Order()
         {
             return this.baseRepository.Gets<OrderEntity>();
+            //sort by state 3>2>1  
         }
         public List<OrderResponse> Orderbuy(List<OrderRequest> request)
         {
             List<OrderEntity> OrderData = this.baseRepository.Gets<OrderEntity>();
+            List<StockEntity> stockEntities = new List<StockEntity>();
             foreach (OrderRequest item in request)
             {
-                //ดึงข้อมูลมา แล้วไป logic ไปแมพแค่ id เท่านั้นแล้ว ค่อยไป calstock
-                //หรือ ก็แอด list นี้ลงให้ได้ในขั้นตอนนี่เพื่อจบทุกอย่างซ่ะ
-                List<StockEntity> StockData = this.baseRepository.Gets<StockEntity>(x => x.id == item.stockId);
+                stockEntities.Add(this.baseRepository.GetItem<StockEntity>(x => x.id == item.stockId));
             }
+
             if (OrderData.Count > 0)
             {
                 this.queueID = this.baseRepository.Gets<OrderEntity>().LastOrDefault().queueOrder;
             }
 
             OrderLogic orderLogic = new OrderLogic();
-            List<StockEntity> stockEntity = orderLogic.calStockLogic(StockData, request);
+            List<StockEntity> stockEntity = orderLogic.calStockLogic(stockEntities, request);
             List<OrderEntity> OrderEntity = orderLogic.calOrderLogic(OrderData, stockEntity, request, queueID);
 
             List<OrderEntity> orderResponses = this.baseRepository.CreateList(OrderEntity);
@@ -46,22 +45,18 @@ namespace pos_chicken_backend.BussinessFlow
             List<OrderResponse> results = orderLogic.convertData(orderResponses);
             return results;
         }
-        public List<OrderStateResponse> Ordersteat(List<OrderStateRequest> request)
+        public string Ordersteat(OrderStateRequest request)
         {
-            //IList<OrderEntity> OrderEntitys;
-            foreach (OrderStateRequest item in request)
+            DateTime datetimFormate = DateTime.Today;
+            List<OrderEntity> OrderDataQ = this.baseRepository.Gets<OrderEntity>().Where(x => x.queueOrder == request.queueOrder && x.createAt.Date == datetimFormate).ToList();
+            foreach (OrderEntity item in OrderDataQ)
             {
-               this.OrderDataQ = (List<OrderEntity>)this.baseRepository.Gets<OrderEntity>().Where(x => x.queueOrder == item.queueOrder).ToList();
+                item.stateId = request.stateId;
             }
-
-            OrderLogic orderLogic = new OrderLogic();
-            IList<OrderEntity> orderResponses = orderLogic.setstateData(request, OrderDataQ);
+            //ณ เวลานี้ where แค่วันที่  && datetime.~~~~ เพื่อ ในแต่ละวัน จะรัน ออเดอร์ใหม่ 1 ณ วัน กับ วันใหม่ #1 มันเป็นของวันนี้มั่ย ถ้าเกิน ก็ไป วันใหม่
+            List<OrderEntity> orderResponseDB = this.baseRepository.UpdateRange<OrderEntity>(OrderDataQ).ToList();
             
-            List<OrderEntity> orderResponseDB = this.baseRepository.Update(orderResponses).ToList();
-            
-            
-
-            return null;
+            return "UpdateSuccess !";
         }
         public List<OrderReportResponse> orderReportResponse()
         {
