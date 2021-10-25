@@ -25,6 +25,25 @@
 		</sql>
 	</changeSet>
 
+	<changeSet id="change-add-table-type-detail" author="Go.purin">
+		<createTable tableName="type_data" schemaName="pos_chicken_backend">
+			<column name="id" type="SERIAL" autoIncrement="true">
+				<constraints primaryKey="true"></constraints>
+			</column>
+			<column name="type_id" type="TEXT">
+				<constraints nullable="false"></constraints>
+			</column>
+		</createTable>
+		<sql>
+			<![CDATA[
+				INSERT INTO pos_chicken_backend.type_data(id,type_id) VALUES
+				(1, 'โปรโมชั่น'),
+				(2, 'ไก่ทอด'),
+				(3, 'หอมเจียว')
+			]]>
+		</sql>
+	</changeSet>
+
 	<changeSet id="chang-add-table-stock-data" author="Go.purin">
 		<createTable tableName="stock_data" schemaName="pos_chicken_backend">
 			<column name="id" type="SERIAL" autoIncrement="true">
@@ -92,6 +111,9 @@
 			<column name="state_id" type="INT">
 				<constraints nullable="false"></constraints>
 			</column>
+			<column name="type_id" type="INT">
+				<constraints nullable="false"></constraints>
+			</column>
 			<column name="create_at" type="DATETIME">
 				<constraints nullable="false"></constraints>
 			</column>
@@ -116,6 +138,16 @@
 				onUpdate="RESTRICT"
 				referencedColumnNames="id"
 				referencedTableName="state_data"/>
+		
+	<addForeignKeyConstraint baseColumnNames="type_id"
+				baseTableName="order_data"
+				constraintName="fk_type_id_order_data_pk_id_type_data"
+				deferrable="true"
+				initiallyDeferred="true"
+				onDelete="CASCADE"
+				onUpdate="RESTRICT"
+				referencedColumnNames="id"
+				referencedTableName="type_data"/>
 		
 	</changeSet>
 

@@ -17,7 +17,7 @@ namespace pos_chicken_backend.BussinessFlow
         }
         public List<StockEntity> Stock()
         {
-            return this.baseRepository.Gets<StockEntity>();
+            return this.baseRepository.Gets<StockEntity>().OrderBy(x => x.id).ToList();
         }
         public StockResponse resgisstock(StockRequest request)
         {

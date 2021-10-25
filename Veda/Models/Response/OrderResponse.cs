@@ -11,6 +11,7 @@ namespace pos_chicken_backend.Models
         public int stockId { get; set; }
         public int quantityOrder { get; set; }
         public int stateId { get; set; }
+        public int typeMenu { get; set; }
         public DateTime createAt { get; set; }
     }
 }

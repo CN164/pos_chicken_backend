@@ -18,7 +18,7 @@ namespace pos_chicken_backend.BussinessFlow
         }
         public List<OrderEntity> Order()
         {
-            return this.baseRepository.Gets<OrderEntity>();
+            return this.baseRepository.GetInclude<OrderEntity>(null, includeProperties: "stateEntity,typeMenuEntity").OrderBy(x => x.queueOrder == 1).ToList();
             //sort by state 3>2>1  
         }
         public List<OrderResponse> Orderbuy(List<OrderRequest> request)
@@ -53,7 +53,6 @@ namespace pos_chicken_backend.BussinessFlow
             {
                 item.stateId = request.stateId;
             }
-            //ณ เวลานี้ where แค่วันที่  && datetime.~~~~ เพื่อ ในแต่ละวัน จะรัน ออเดอร์ใหม่ 1 ณ วัน กับ วันใหม่ #1 มันเป็นของวันนี้มั่ย ถ้าเกิน ก็ไป วันใหม่
             List<OrderEntity> orderResponseDB = this.baseRepository.UpdateRange<OrderEntity>(OrderDataQ).ToList();
             
             return "UpdateSuccess !";

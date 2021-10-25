@@ -64,23 +64,23 @@ namespace pos_chicken_backend.Repository
             this._context.SaveChanges();
             return model;
         }
-        //public List<T> GetPaginateData<T>(PageQuery pageQuery, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null) where T : class
-        //{
-        //    IQueryable<T> query = this._context.Set<T>();
-        //    if (orderBy != null)
-        //    {
-        //        query = orderBy(query);
-        //    }
-        //    if (predicate != null)
-        //    {
-        //        query = query.Where(predicate).Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize);
-        //    }
-        //    else
-        //    {
-        //        query = query.Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize);
-        //    }
-        //    return query.ToList();
-        //}
+        public List<T> GetPaginateData<T>(PageQuery pageQuery, Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null) where T : class
+        {
+            IQueryable<T> query = this._context.Set<T>();
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+            if (predicate != null)
+            {
+                query = query.Where(predicate).Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize);
+            }
+            else
+            {
+                query = query.Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize);
+            }
+            return query.ToList();
+        }
         public int Count<T>(Expression<Func<T, bool>> predicate = null) where T : class
         {
             int result = 0;
@@ -158,38 +158,38 @@ namespace pos_chicken_backend.Repository
         {
             dbContextTransaction.Dispose();
         }
-        //public List<T> GetInclude<T>(PageQuery pageQuery, Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "", bool isNoTracking = true) where T : class
-        //{
-        //    IQueryable<T> query = this._context.Set<T>();
-        //    if (orderBy != null)
-        //    {
-        //        query = orderBy(query);
-        //    }
-        //    if (includeProperties != null)
-        //        foreach (string includeProperty in includeProperties.Split
-        //            (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-        //        {
-        //            query = query.Include(includeProperty);
-        //        }
-        //    if (isNoTracking)
-        //        query = query.AsNoTracking();
-        //    if (filter != null && pageQuery != null)
-        //    {
-        //        return query.Where(filter).Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize).ToList();
-        //    }
-        //    else if (pageQuery == null && filter == null)
-        //    {
-        //        return query.ToList();
-        //    }
-        //    else if (pageQuery == null)
-        //    {
-        //        return query.Where(filter).ToList();
-        //    }
-        //    else
-        //    {
-        //        return query.Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize).ToList();
-        //    }
-        //}
+        public List<T> GetInclude<T>(PageQuery pageQuery, Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "", bool isNoTracking = true) where T : class
+        {
+            IQueryable<T> query = this._context.Set<T>();
+            if (orderBy != null)
+            {
+                query = orderBy(query);
+            }
+            if (includeProperties != null)
+                foreach (string includeProperty in includeProperties.Split
+                    (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+            if (isNoTracking)
+                query = query.AsNoTracking();
+            if (filter != null && pageQuery != null)
+            {
+                return query.Where(filter).Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize).ToList();
+            }
+            else if (pageQuery == null && filter == null)
+            {
+                return query.ToList();
+            }
+            else if (pageQuery == null)
+            {
+                return query.Where(filter).ToList();
+            }
+            else
+            {
+                return query.Skip((pageQuery.pageNumber - 1) * pageQuery.pageSize).Take(pageQuery.pageSize).ToList();
+            }
+        }
         public T GetItemInclude<T>(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, string includeProperties = "", bool isNoTracking = true) where T : class
         {
             T result = null;
