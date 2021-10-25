@@ -34,9 +34,9 @@ namespace pos_chicken_backend.Controllers
             return response;
         }
         [HttpGet("/Order/report")]
-        public List<OrderReportResponse> orderReportResponse()
+        public List<OrderReportResponse> orderReportResponse(DateTime scope)
         {
-            List<OrderReportResponse> response = _orderBussinessFlow.orderReportResponse();
+            List<OrderReportResponse> response = _orderBussinessFlow.orderReportResponse(scope);
             return response;
         }
     }

@@ -12,7 +12,7 @@ cd ./Liquibase/workspace
 
 dbUrl="jdbc:postgresql://postgres:5432/postgres"
 dbUserName="postgres"
-dbPassword=""
+dbPassword="12345678"
 
 if [ $ASPNETCORE_ENVIRONMENT = "LocalRegression" ] ;\
 then\

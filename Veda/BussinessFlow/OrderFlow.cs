@@ -58,13 +58,13 @@ namespace pos_chicken_backend.BussinessFlow
             
             return "UpdateSuccess !";
         }
-        public List<OrderReportResponse> orderReportResponse()
+        public List<OrderReportResponse> orderReportResponse(DateTime scopeTime)
         {
             List<OrderEntity> OrderDatas = this.baseRepository.Gets<OrderEntity>();
             List<StockEntity> StockDatas = this.baseRepository.Gets<StockEntity>();
 
             OrderLogic orderLogic = new OrderLogic();
-            List<OrderReportResponse> OrderReportResponse = orderLogic.orderReportResponses(OrderDatas, StockDatas);
+            List<OrderReportResponse> OrderReportResponse = orderLogic.orderReportResponses(OrderDatas, StockDatas, scopeTime);
 
             return OrderReportResponse;
         }

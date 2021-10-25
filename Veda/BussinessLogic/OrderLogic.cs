@@ -88,13 +88,13 @@ namespace pos_chicken_backend.BussinessLogic
 
             return results;
         }
-        public List<OrderReportResponse> orderReportResponses(List<OrderEntity> OrderDatas, List<StockEntity> StockDatas)
+        public List<OrderReportResponse> orderReportResponses(List<OrderEntity> OrderDatas, List<StockEntity> StockDatas, DateTime scopeTime)
         {
             List<OrderReportResponse> results = new List<OrderReportResponse>();
             
             foreach (StockEntity product in StockDatas)
             {
-                List<OrderEntity> orders = OrderDatas.Where(x => x.stockId == product.id).ToList();
+                List<OrderEntity> orders = OrderDatas.Where(x => x.stockId == product.id && x.createAt.Date >= scopeTime.Date).ToList();
                 if (orders.Count > 0)
                 {
                     OrderReportResponse orderSet = new OrderReportResponse()
@@ -103,6 +103,7 @@ namespace pos_chicken_backend.BussinessLogic
                         stokcName = product.stockName,
                         totalUnit = orders.Sum(x => x.quantityOrder),
                         totalPrice = orders.Sum(x => x.quantityOrder) * product.stockunitPrice
+
                     };
                     results.Add(orderSet);
                 }

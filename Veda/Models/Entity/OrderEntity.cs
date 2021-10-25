@@ -32,7 +32,14 @@ namespace pos_chicken_backend.Models
         [Column("state_id")]
         public int stateId { get; set; }
 
+        [Column("type_id")]
+        public int typeId { get; set; }
+
         [Column("create_at")]
         public DateTime createAt { get; set; }
+
+        [ForeignKey("stateId")]
+        public StateEntity stateEntity { get; set; }
+
     }
 }
