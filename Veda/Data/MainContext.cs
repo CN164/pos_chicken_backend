@@ -14,6 +14,7 @@ namespace pos_chicken_backend.Data
         public DbSet<OrderEntity> OrderEntity { get; set; }
         public DbSet<StockEntity> StockEntity { get; set; }
         public DbSet<StateEntity> StateEntity { get; set; }
+        public DbSet<TypeMenuEntity> TypeMenuEntity { get; set; }
 
     }
 }

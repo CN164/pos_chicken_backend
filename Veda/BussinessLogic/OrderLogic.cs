@@ -44,6 +44,7 @@ namespace pos_chicken_backend.BussinessLogic
                     quantityOrder = item.quantityOrder,
                     totalPromotion = 0,
                     stateId = 1,
+                    typeId = item.typeMenu,
                     createAt = date
                 };
                 results.Add(orderSet);
@@ -62,6 +63,7 @@ namespace pos_chicken_backend.BussinessLogic
                     stockId = item.stockId,
                     quantityOrder = item.quantityOrder,
                     stateId = item.stateId,
+                    typeMenu = item.typeId,
                     createAt = item.createAt
                 };
                 results.Add(orderSet);

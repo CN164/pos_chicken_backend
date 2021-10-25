@@ -41,5 +41,8 @@ namespace pos_chicken_backend.Models
         [ForeignKey("stateId")]
         public StateEntity stateEntity { get; set; }
 
+        [ForeignKey("typeId")]
+        public TypeMenuEntity typeMenuEntity { get; set; }
+
     }
 }
