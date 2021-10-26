@@ -17,7 +17,7 @@ namespace pos_chicken_backend.BussinessLogic
             stockEntity.stockunitPrice = request.stockunitPrice;
             stockEntity.pointtoBuy = request.pointtoBuy;
             stockEntity.additionalUnit = (request.pointtoBuy - request.stockTotal);
-            stockEntity.parthUrl = request.parthUrl;
+            stockEntity.pathUrl = request.parthUrl;
 
             return stockEntity;
         }
@@ -29,7 +29,7 @@ namespace pos_chicken_backend.BussinessLogic
             stockResponse.stockName = request.stockName;
             stockResponse.stockTotal = request.stockTotal;
             stockResponse.stockunitPrice = request.stockunitPrice;
-            stockResponse.parthUrl = request.parthUrl;
+            stockResponse.pathUrl = request.pathUrl;
 
             return stockResponse;
         }

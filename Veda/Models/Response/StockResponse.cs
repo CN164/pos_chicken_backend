@@ -11,6 +11,8 @@ namespace pos_chicken_backend.Models
         public string stockName { get; set; }
         public int stockTotal { get; set; }
         public int stockunitPrice { get; set; }
-        public string parthUrl { get; set; }
+        public string pathUrl { get; set; }
+
+        public int typeMenu { get; set; }
     }
 }

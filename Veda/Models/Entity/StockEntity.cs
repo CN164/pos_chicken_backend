@@ -32,8 +32,11 @@ namespace pos_chicken_backend.Models
         [Column("additional_unit")]
         public int additionalUnit { get; set; }
 
-        [Column("parth_url")]
-        public string parthUrl { get; set; }
+        [Column("path_url")]
+        public string pathUrl { get; set; }
+
+        [Column("type_id")]
+        public int typeMenuN { get; set; }
 
     }
 }
