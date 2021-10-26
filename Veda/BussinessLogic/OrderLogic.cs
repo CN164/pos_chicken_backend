@@ -111,5 +111,25 @@ namespace pos_chicken_backend.BussinessLogic
             }
             return results;
         }
+
+        public List<OrderGetResponse> orderGetResponse(List<OrderEntity> orderDatas)
+        {
+            List<OrderGetResponse> results = new List<OrderGetResponse>();
+
+            foreach (OrderEntity orderItems in orderDatas)
+            {
+                OrderGetResponse orderSet = new OrderGetResponse()
+                {
+                    quantityOrder = orderItems.quantityOrder,
+                    stockId = orderItems.stockId,
+                    stockEntity = orderItems.stockEntity,
+                    queueOrder = orderItems.queueOrder,
+                    stateEntity = orderItems.stateEntity
+                };
+                results.Add(orderSet);
+            }
+
+            return results;
+        }
     }
 }
