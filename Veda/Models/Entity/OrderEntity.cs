@@ -23,6 +23,9 @@ namespace pos_chicken_backend.Models
         [Column("stock_id")]
         public int stockId { get; set; }
 
+        [ForeignKey("stockId")]
+        public StockEntity stockEntity { get; set; }
+
         [Column("total_promotion")]
         public int totalPromotion { get; set; }
 

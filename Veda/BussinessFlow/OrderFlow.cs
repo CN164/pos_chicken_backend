@@ -16,10 +16,24 @@ namespace pos_chicken_backend.BussinessFlow
         {
             this.baseRepository = baseRepository;
         }
-        public List<OrderEntity> Order()
+        public List<QueueOrderResponse> Order()
         {
-            return this.baseRepository.GetInclude<OrderEntity>(null, includeProperties: "stateEntity,typeMenuEntity").OrderBy(x => x.queueOrder == 1).ToList();
-            //sort by state 3>2>1  
+            List<QueueOrderResponse> results = new List<QueueOrderResponse>();
+            List<List<OrderEntity>> orderLogic = this.baseRepository.GetInclude<OrderEntity>(null, includeProperties: "stateEntity,typeMenuEntity,stockEntity").GroupBy(x => x.queueOrder).Select(x => x.ToList()).ToList();
+            foreach (List<OrderEntity> items in orderLogic)
+            {
+                QueueOrderResponse queue = new QueueOrderResponse();
+                List<StockEntity> productLists = new List<StockEntity>();
+                foreach (OrderEntity item in items)
+                {
+                    queue.queue = item.queueOrder;
+                    queue.state = item.stateEntity;
+                    productLists.Add(item.stockEntity);
+                }
+                queue.products = productLists;
+                results.Add(queue);
+            }
+            return results;
         }
         public List<OrderResponse> Orderbuy(List<OrderRequest> request)
         {

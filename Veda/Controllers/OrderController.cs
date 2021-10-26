@@ -17,7 +17,7 @@ namespace pos_chicken_backend.Controllers
             this._orderBussinessFlow = orderBussinessFlow;
         }
         [HttpGet("/order")]
-        public List<OrderEntity> Ordedr()
+        public List<QueueOrderResponse> Ordedr()
         {
             return _orderBussinessFlow.Order();
         }
