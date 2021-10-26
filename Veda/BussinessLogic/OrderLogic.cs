@@ -105,7 +105,6 @@ namespace pos_chicken_backend.BussinessLogic
                         stokcName = product.stockName,
                         totalUnit = orders.Sum(x => x.quantityOrder),
                         totalPrice = orders.Sum(x => x.quantityOrder) * product.stockunitPrice
-
                     };
                     results.Add(orderSet);
                 }
