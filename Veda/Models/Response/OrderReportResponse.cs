@@ -11,7 +11,6 @@ namespace pos_chicken_backend.Models
         public string stokcName { get; set; }
         public int totalUnit { get; set; }
         public int totalPrice { get; set; }
-        public DateTime createdAt { get; set; }
 
     }
 }
