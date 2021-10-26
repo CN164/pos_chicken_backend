@@ -67,10 +67,10 @@
 			<column name="path_url" type="TEXT">
 				<constraints nullable="false"></constraints>
 			</column>
-			<column name="type_id" type="TEXT">
+			<column name="type_id" type="SERIAL">
 				<constraints nullable="false"></constraints>
 			</column>
-		</createTable>
+		</createTable> 
 
 		<addForeignKeyConstraint baseColumnNames="type_id"
 				baseTableName="stock_data"
