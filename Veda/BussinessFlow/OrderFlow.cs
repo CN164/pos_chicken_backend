@@ -23,12 +23,17 @@ namespace pos_chicken_backend.BussinessFlow
             foreach (List<OrderEntity> items in orderLogic)
             {
                 QueueOrderResponse queue = new QueueOrderResponse();
-                List<StockEntity> productLists = new List<StockEntity>();
+                List<OrderProductDetailResponse> productLists = new List<OrderProductDetailResponse>();
                 foreach (OrderEntity item in items)
                 {
                     queue.queue = item.queueOrder;
                     queue.state = item.stateEntity;
-                    productLists.Add(item.stockEntity);
+                    productLists.Add(new OrderProductDetailResponse() 
+                    { 
+                        quantity = item.quantityOrder,
+                        stockName = item.stockEntity.stockName,
+                        totalPrice = item.stockEntity.stockunitPrice * item.quantityOrder
+                    });
                 }
                 queue.products = productLists;
                 results.Add(queue);
