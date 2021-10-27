@@ -27,7 +27,7 @@ namespace pos_chicken_backend.Controllers
             List<OrderResponse> response = _orderBussinessFlow.Orderbuy(request);
             return response;
         }
-        [HttpPatch("/Order/state")]
+        [HttpPost("/Order/state")]
         public string OrderUpdate([FromBody] OrderStateRequest request)
         {
             string response = this._orderBussinessFlow.Ordersteat(request);

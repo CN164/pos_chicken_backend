@@ -58,8 +58,9 @@ namespace pos_chicken_backend
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:3000")
+                                      builder.WithOrigins("http://localhost:5000")
                                           .AllowAnyHeader()
+                                          .AllowAnyOrigin()
                                           .AllowAnyMethod();
                                   });
             });
